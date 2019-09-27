@@ -16,11 +16,12 @@ namespace SecretSanta.Cmd
         {
             GenerateHamiltonean,
             PrintWeights,
-            Quit
+            Quit,
+            Usage
         }
         static void Main(string[] args)
         {
-#if false
+#if true
             _family = new Family(new string[] {
                 "Linnea",
                 "Christopher",
@@ -30,13 +31,16 @@ namespace SecretSanta.Cmd
                 "Elizabeth",
                 "Josh",
                 "Daniel",
-                "Kanesa"
+                "Kanesa",
+                "Austin"
             });
 
             _family.SetExcludedPair("Linnea", "Christopher");
             _family.SetExcludedPair("Corina", "James");
             _family.SetExcludedPair("Sam", "Elizabeth");
+            _family.SetExcludedPair("Kanesa", "Austin");
 
+            // 2017
             _family.SetPreviousGiver("James", "Sam");
             _family.SetPreviousGiver("Corina", "Linnea");
             _family.SetPreviousGiver("Linnea", "Corina");
@@ -45,6 +49,17 @@ namespace SecretSanta.Cmd
             _family.SetPreviousGiver("Josh", "James");
             _family.SetPreviousGiver("Daniel", "Josh");
             _family.SetPreviousGiver("Kanesa", "Christopher");
+
+            // 2018
+            _family.SetPreviousGiver("Linnea", "Kanesa");
+            _family.SetPreviousGiver("Christopher", "James");
+            _family.SetPreviousGiver("Corina", "Christopher");
+            _family.SetPreviousGiver("James", "Linnea");
+            _family.SetPreviousGiver("Sam", "Corina");
+            _family.SetPreviousGiver("Elizabeth", "Josh");
+            _family.SetPreviousGiver("Josh", "Sam");
+            _family.SetPreviousGiver("Daniel", "Elizabeth");
+            _family.SetPreviousGiver("Kanesa", "Daniel");
 #else
             _family = new Family(new string[]
             {
@@ -52,19 +67,32 @@ namespace SecretSanta.Cmd
                 "Easton",
                 "Rhett",
                 "Levi",
+                "Tucker",
                 "Alvin",
-                "Glenna"
+                "Glenna",
+                "Meridian"
             });
 
             _family.SetExcludedPair("Mandy", "Easton");
             _family.SetExcludedPair("Rhett", "Levi");
+            _family.SetExcludedPair("Rhett", "Tucker");
+            _family.SetExcludedPair("Tucker", "Levi");
             _family.SetExcludedPair("Alvin", "Glenna");
 
+            // 2017
             _family.SetPreviousGiver("Alvin", "Levi");
             _family.SetPreviousGiver("Rhett", "Mandy");
             _family.SetPreviousGiver("Levi", "Easton");
             _family.SetPreviousGiver("Mandy", "Alvin");
             _family.SetPreviousGiver("Easton", "Rhett");
+
+            //2018
+            _family.SetPreviousGiver("Mandy", "Glenna");
+            _family.SetPreviousGiver("Easton", "Levi");
+            _family.SetPreviousGiver("Rhett", "Alvin");
+            _family.SetPreviousGiver("Levi", "Mandy");
+            _family.SetPreviousGiver("Alvin", "Easton");
+            _family.SetPreviousGiver("Glenna", "Rhett");
 #endif
             Command c;
             while ((c = ReadCommand()) != Command.Quit)
@@ -77,8 +105,19 @@ namespace SecretSanta.Cmd
                     case Command.GenerateHamiltonean:
                         GenerateHamiltonean();
                         break;
+                    case Command.Usage:
+                        PrintUsage();
+                        break;
                 }
             }
+        }
+
+        private static void PrintUsage()
+        {
+            Console.WriteLine(@"USAGE: (p, g, q)
+p - Print current weights
+g - Generate new hamiltonean circuit
+q - quit");
         }
 
         private static void GenerateHamiltonean()
@@ -93,7 +132,7 @@ namespace SecretSanta.Cmd
             Console.Write("\\/gives  to> ");
             foreach (string participant in matrix.Participants)
             {
-                Console.Write("{0, -12}", participant);
+                Console.Write("{0, -4}", participant.Substring(0, 3));
             }
 
             Console.WriteLine();
@@ -106,7 +145,7 @@ namespace SecretSanta.Cmd
                 foreach (string recipient in matrix.Participants)
                 {
                     int recipientIndex = matrix.GetIndex(recipient);
-                    Console.Write("{0, -12}", matrix.GetWeight(giverIndex, recipientIndex));
+                    Console.Write("{0, -4}", matrix.GetWeight(giverIndex, recipientIndex));
                 }
 
                 Console.WriteLine();
@@ -126,8 +165,10 @@ namespace SecretSanta.Cmd
                     return Command.PrintWeights;
                 case "g":
                     return Command.GenerateHamiltonean;
-                default:
+                case "q":
                     return Command.Quit;
+                default:
+                    return Command.Usage;
             }
         }
     }

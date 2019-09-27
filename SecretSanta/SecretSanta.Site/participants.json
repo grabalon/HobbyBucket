@@ -1,0 +1,28 @@
+﻿{
+  "matchups": [
+    {
+      "giver": "James",
+      "recipient": "Levi"
+    },
+    {
+      "giver": "Corina",
+      "recipient": "Rhett"
+    },
+			{
+				"giver": "Mandy",
+				"recipient": "Corina"
+			},
+    {
+      "giver": "Easton",
+      "recipient": "James"
+    },
+    {
+      "giver": "Rhett",
+      "recipient": "Mandy"
+    },
+    {
+      "giver": "Levi",
+      "recipient": "Easton"
+    }
+  ]
+}

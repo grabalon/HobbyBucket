@@ -1,0 +1,28 @@
+﻿{
+	"matchups": [
+		{
+			"giver": "Mandy",
+			"recipient": "Glenna"
+		},
+		{
+			"giver": "Easton",
+			"recipient": "Levi"
+		},
+		{
+			"giver": "Rhett",
+			"recipient": "Alvin"
+		},
+		{
+			"giver": "Levi",
+			"recipient": "Mandy"
+		},
+		{
+			"giver": "Alvin",
+			"recipient": "Easton"
+		},
+		{
+			"giver": "Glenna",
+			"recipient": "Rhett"
+		}
+	]
+}

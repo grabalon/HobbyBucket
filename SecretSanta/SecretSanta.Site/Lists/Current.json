@@ -1,0 +1,53 @@
+﻿/*
+\/gives  to> Lin Chr Cor Jam Sam Eli Jos Dan Kan Aus
+Linnea       0   0   0   0   0   0   0   0   0   1
+Christopher  0   0   1   0   0   0   0   0   0   0
+Corina       0   0   0   0   1   0   0   0   0   0
+James        0   1   0   0   0   0   0   0   0   0
+Sam          1   0   0   0   0   0   0   0   0   0
+Elizabeth    0   0   0   1   0   0   0   0   0   0
+Josh         0   0   0   0   0   1   0   0   0   0
+Daniel       0   0   0   0   0   0   0   0   1   0
+Kanesa       0   0   0   0   0   0   1   0   0   0
+Austin       0   0   0   0   0   0   0   1   0   0
+*/
+{
+  "matchups": [
+    {
+      "giver": "Linnea",
+      "recipient": "Austin"
+    },
+    {
+      "giver": "Christopher",
+      "recipient": "Corina"
+    },
+    {
+      "giver": "Corina",
+      "recipient": "Sam"
+    },
+    {
+      "giver": "James",
+      "recipient": "Christopher"
+    },
+    {
+      "giver": "Sam",
+      "recipient": "Linnea"
+    },
+    {
+      "giver": "Elizabeth",
+      "recipient": "James"
+    },
+    {
+      "giver": "Josh",
+      "recipient": "Elizabeth"
+    },
+    {
+      "giver": "Daniel",
+      "recipient": "Kanesa"
+    },
+    {
+      "giver": "Austin",
+      "recipient": "Daniel"
+    }
+  ]
+}
